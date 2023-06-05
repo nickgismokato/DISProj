@@ -1,0 +1,33 @@
+{
+"leveranceNavn":"dagitest2_20200420021820.zip",
+"miljoe":"PROD01",
+"fortroligData":"Nej",
+"dataOmfattetAfPersondataloven":"Nej",
+"DatafordelerUdtraekstidspunkt": [
+{
+"deltavindueStart":"1900-01-01T00:00:00.000+00:00",
+"deltavindueSlut":"2020-04-20T02:18:20.452+02:00"}],
+"tilgaengelighedsperiode":7,
+"AbonnementsOplysninger": [
+{
+"webBrugernavn":"ThereseGraverse6A5J4",
+"tjenesteBrugernavn":"ZWPZLKKZWO",
+"abonnementnavn":"dagitest2",
+"tjenestenavn":"DAGI10MULTIGEOM",
+"tjenesteversion":"1.1.1",
+"oprettelsesdato":"2020-04-20T02:15:34.249+02:00",
+"senesteAbonnementRedigeringsdato":"2020-04-20T02:15:34.249+02:00",
+"gentagelsesinterval":"Adhoc"}],
+"BrugerUdfyldteParametre": [
+{
+"parameternavn":"executionTimestamp",
+"parametervaerdi":"2020-04-20T02:18:20.452+02:00"},
+{
+"parameternavn":"lastExecutedTimestamp",
+"parametervaerdi":""},
+{
+"parameternavn":"output_format",
+"parametervaerdi":"SHP"},
+{
+"parameternavn":"DAGI10MULTIGEOM",
+"parametervaerdi":"NULL"}]}
