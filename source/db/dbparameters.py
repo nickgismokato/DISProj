@@ -1,6 +1,6 @@
 def params():
 
-    database='DIKUChan'
+    database='dikuchan'
     user='postgres'
     password='postgres'
 
