@@ -4,6 +4,11 @@ import random as rand
 
 app = Flask(__name__)
 
+from db.db_interface import db_init
+from db.dbparameters import *
+
+
+
 #Localhost:5000/
 @app.route("/", methods=['GET','POST'])
 def index():
@@ -36,4 +41,5 @@ def user(name):
 
 if __name__ == "__main__":
     app.debug = True
+    db_init()
     app.run(host="localhost", port=5000, debug=True)
