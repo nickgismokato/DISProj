@@ -1,15 +1,25 @@
 from flask import Flask, render_template, redirect, url_for, request
 from flask.views import View
 import random as rand
+from db.db_interface import *
+from db.dbparameters import *
+from data.Muni import *
+from flask_login import LoginManager
 
 app = Flask(__name__)
 
-from db.db_interface import *
-from db.dbparameters import *
-
-from data.Muni import *
+class user:
+    name = None
+    UID = None
+    loggedIn = False
+    def __init__(self, name, UID) -> None:
+        self.name = name
+        self.UID = UID
+        loggedIn = True
+    
 
 initialized = False
+
 
 #Initialize all the necesary stuff from the beginning
 def initStart():
@@ -17,7 +27,6 @@ def initStart():
     komm = tsvClass()
     for KOMS in komm.muni:
         createmunicipality(KOMS[0])
-    
     return None
 
 #Localhost:5000/
@@ -41,7 +50,8 @@ def threads():
 def login():
     error = None
     if request.method == 'POST':
-        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+        UID = login(request.form['username'], request.form['password'])
+        if UID == -1:
             error = 'Invalid Credentials. Please try again.'
         else:
             return redirect(url_for('index'))
@@ -72,6 +82,12 @@ def table():
 def user(name):
     ageUser = rand.randint(0,99)
     return render_template("user.html", user = name, age = ageUser)
+
+@app.route('/test', methods=['GET'])
+def dropdown():
+    colours = ['Red', 'Blue', 'Black', 'Orange']
+    return render_template('test.html', colours=colours)
+
 
 if __name__ == "__main__":
     app.debug = True
