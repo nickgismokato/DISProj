@@ -112,7 +112,7 @@ def registerUser(username, password):
         with open('source/db/register.sql','r') as sql_file:
             content = sql_file.read()
 
-        values = (username, password, today, True)
+        values = (username, password, today, False)
 
         cur.execute(content, values)
 
