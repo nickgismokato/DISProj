@@ -9,14 +9,24 @@ from db.dbparameters import *
 
 from data.Muni import *
 
+initialized = False
 
-#Localhost:5000/
-@app.route("/", methods=['GET','POST'])
-def index():
+#Initialize all the necesary stuff from the beginning
+def initStart():
     db_init()
     komm = tsvClass()
     for KOMS in komm.muni:
         createmunicipality(KOMS[0])
+    
+    return None
+
+#Localhost:5000/
+@app.route("/", methods=['GET','POST'])
+def index():
+    global initialized
+    if not initialized:
+        initStart()
+    initialized = True
     return render_template("index.html")
 
 @app.route('/threads', methods = ['GET', 'POST'])
