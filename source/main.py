@@ -12,15 +12,19 @@ class user:
     name = None
     UID = None
     loggedIn = False
-    def __init__(self, name, UID) -> None:
-        self.name = name
-        self.UID = UID
-        loggedIn = True
+    def __init__(self) -> None:
+        None
+    def logginIn(self, user, uid):
+        self.name = user
+        self.UID = uid
+        self.loggedIn = True
     def status(self,St):
         self.loggedIn = St
+    def printStatus(self):
+        print(self.loggedIn)
 
 initialized = False
-
+userClass = user()
 
 #Initialize all the necesary stuff from the beginning
 def initStart():
@@ -49,14 +53,19 @@ def threads():
 
 @app.route("/auth/login", methods=['GET','POST'])
 def login():
-    error = None
-    if request.method == 'POST':
-        UID = login(request.form['username'], request.form['password'])
-        if UID == -1:
-            error = 'Invalid Credentials. Please try again.'
-        else:
-            return redirect(url_for('index'))
-    return render_template('auth/login.html', error=error)
+    if userClass.loggedIn == False:
+        error = None
+        if request.method == 'POST':
+            UID = loginUser(request.form['username'], request.form['password'])
+            if UID == -1:
+                error = 'Invalid Credentials. Please try again.'
+            else:
+                userClass.logginIn(request.form['username'], UID)
+                userClass.printStatus()
+                return redirect(url_for('index'))
+        return render_template('auth/login.html', error=error)
+    else:
+        return redirect(url_for('index'))
 
 @app.route("/auth/register", methods = ['GET','POST'])
 def register():

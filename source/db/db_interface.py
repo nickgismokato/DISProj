@@ -61,7 +61,7 @@ def createmunicipality(municipalityname):
         return
 
 #login a user, arguments: username = string, name of user. password = string, user password
-def login(username, password):
+def loginUser(username, password):
     conn = None
     conf = params()
     uid = -1
