@@ -1,1 +1,1 @@
-UPDATE posts set content = %s where pid = %s
+UPDATE posts set content = %s where pid = %s AND uid_pk = %s

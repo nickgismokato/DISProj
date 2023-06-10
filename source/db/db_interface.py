@@ -172,7 +172,8 @@ def createpost(username, municipalityname, text):
             cur.close()
             conn.close()
 
-def editpost():
+#Edit a post, arugments: userid = integer, id of user. postid = integer, id of post. text = string, content 
+def editpost(userid, postid, text):
     return
 
 #Delete a post, arguments: postid = integer, id of post
