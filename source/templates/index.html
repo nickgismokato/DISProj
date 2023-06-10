@@ -4,16 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/universal.css') }}">
     <title>Dis Project</title>
 </head>
 <body>
-    <header>
-        <h1>Navigation</h1>
-        <a href="{{ url_for('login') }}">login</a>
-        <a href="{{ url_for('map') }}">map</a>
-    </header>
-    <h1>Welcome to DIKU-chan!!</h1>
-    <p>Login or or sign up above!!</p>
+      <li><a href="{{ url_for('index') }}">mainpage</a></li>
+      <li><a href="{{ url_for('login') }}">Login</a></li>
+      <li><a href="{{ url_for('map') }}">See the map!</a></li>
+    <h1>Hello, World!</h1>
+    <p>Din mor er sadsd!</p>
 </body>
 </html>
