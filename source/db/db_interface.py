@@ -1,11 +1,11 @@
 import psycopg2
 from datetime import date
-from config import config
+from dbparameters import params
 
 #Initialize database
 def db_init():
     conn = None
-    conf = config()
+    conf = params()
 
     try:
         #connection
@@ -33,7 +33,7 @@ def db_init():
 #Create municipality, arguments: municipalityname = string, name of municipality
 def createmunicipality(municipalityname):
     conn = None
-    conf = config()
+    conf = params()
 
     try:
         #connection
@@ -68,7 +68,7 @@ def login(username, password):
 def register(username, password):
     today = date.today()
     conn = None
-    conf = config()
+    conf = params()
 
     try:
         #connection
@@ -98,7 +98,7 @@ def register(username, password):
 #Delete a user, arguments: username = string, name of user
 def deleteuser(username):
     conn = None
-    conf = config()
+    conf = params()
 
     try:
         #connection
@@ -130,7 +130,7 @@ def deleteuser(username):
 def createpost(username, municipalityname, text):
     today = date.today()
     conn = None
-    conf = config()
+    conf = params()
 
     try:
         #connection
@@ -172,10 +172,13 @@ def createpost(username, municipalityname, text):
             cur.close()
             conn.close()
 
+def editpost():
+    return
+
 #Delete a post, arguments: postid = integer, id of post
 def deletepost(postid):
     conn = None
-    conf = config()
+    conf = params()
 
     try:
         #connection
@@ -206,7 +209,7 @@ def deletepost(postid):
 def createreply(username, postid, text):
     today = date.today()
     conn = None
-    conf = config()
+    conf = params()
 
     try:
         #connection
@@ -245,7 +248,7 @@ def createreply(username, postid, text):
 #Delete a reply, arguments: replyid = integer, id of reply
 def deletereply(replyid):
     conn = None
-    conf = config()
+    conf = params()
 
     try:
         #connection
@@ -278,7 +281,7 @@ def getmunicipality(name):
 #Subscribes a user to a municipality, arguments: uesrname = string, name of user. municipalityname = string, name of municipality
 def subscribe(username, municipalityname):
     conn = None
-    conf = config()
+    conf = params()
 
     try:
         #connection

@@ -1,0 +1,1 @@
+UPDATE posts set content = %s where pid = %s

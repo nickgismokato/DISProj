@@ -1,4 +1,4 @@
-def config():
+def params():
 
     database='DIKUChan'
     user='postgres'
