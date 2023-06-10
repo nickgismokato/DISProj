@@ -4,9 +4,7 @@ import random as rand
 
 app = Flask(__name__)
 
-
-
-#Localhost:8080/
+#Localhost:5000/
 @app.route("/", methods=['GET','POST'])
 def index():
     return render_template("index.html")
@@ -21,20 +19,16 @@ def login():
             return redirect(url_for('index'))
     return render_template('auth/login.html', error=error)
 
-@app.route("/templates/map", methods=['GET','POST'])
+@app.route("/map", methods=['GET','POST'])
 def map():
     error = None
-    return render_template('template/map.html', error=error)
+    return render_template('map.html', error=error)
 
 @app.route("/user/<name>")
 def user(name):
     ageUser = rand.randint(0,99)
     return render_template("user.html", user = name, age = ageUser)
 
-@app.route("/map", methods=['GET', 'POST'])
-def root():
-    return render_template('map.html')
-
 if __name__ == "__main__":
     app.debug = True
-    app.run(host="localhost", port=8080, debug=True)
+    app.run(host="localhost", port=5000, debug=True)
