@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'header.html' %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dis Project</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        
+        html {
+            display: table;
+            margin: auto;
+        }
+        
+        body {
+            display: table-cell;
+            vertical-align: middle;
+        }        
+    </style>
+</head>
+<body>
+    <h1>Post in a thread below! Showing threads from {{ municipality }}</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <!--This might need to be fixed depending on how data is delivered-->
+                <th>Post ID</th>
+                <th>Author</th>
+                <th>Date</th>
+                <th>Content</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for thread in threads %}
+            <tr>
+                <td>{{ thread[0] }}</td>
+                <td>{{ thread[1] }}</td>
+                <td>{{ thread[2] }}</td>
+                <td>{{ thread[3] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
