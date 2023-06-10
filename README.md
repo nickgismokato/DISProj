@@ -8,22 +8,34 @@ Project repo for DIS Project
 - psycopg2-binary [&ge; 2.9.6]
 - pgAdmin4 & postgresQL
 
+## How to clone repo
+
+To clone this repository, firstly create or choose a place where this project is gonna be place.
+
+Then go to that directory and run the following code:
+```bash
+git clone https://github.com/nickgismokato/DISProj.git
+```
+This will clone the repository and put it into a folder called `DISProj`.
+
 ## postgress prerequisites
 1) Create a server if no server has been created
 2) Change the password of the user `postgres` to **postgres**
 3) Create Database called DIKUChan where the owner is the `postgres` user
 
-<u>**Alternative**</U>
+<ins> **Alternative** </ins>
 
 Set your own parameters in the file `source/dbparameters.py`
 
 ## How to run application
 
+
+
 navigate to the project folder `~/DISProj`. From here run the following commands:
 ```bash
-~/DISProj$ source bin/activate
-~/DISProj$ export FLASK_APP=source/main.py
-~/DISProj$ flask run
+source bin/activate
+export FLASK_APP=source/main.py
+flask run
 ```
 
 This WebAPP should now run with the following code in the terminal:
