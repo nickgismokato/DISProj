@@ -1,6 +1,6 @@
 import psycopg2
 from datetime import date
-from dbparameters import params
+from db.dbparameters import params
 
 #Initialize database
 def db_init():
