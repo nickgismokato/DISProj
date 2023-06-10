@@ -18,8 +18,10 @@ class user:
         self.name = user
         self.UID = uid
         self.loggedIn = True
-    def status(self,St):
+    def loggingOut(self,St):
         self.loggedIn = St
+        self.name = None
+        self.UID = None
     def printStatus(self):
         print(self.loggedIn)
 
@@ -33,6 +35,11 @@ def initStart():
     for KOMS in komm.muni:
         createmunicipality(KOMS[0])
     return None
+
+def logOut():
+    updateStatus(userClass.name,False)
+    userClass.loggingOut(False)
+    
 
 #Localhost:5000/
 @app.route("/", methods=['GET','POST'])
