@@ -20,7 +20,7 @@ Set your own parameters in the file `source/dbparameters.py`
 ## How to run application
 
 navigate to the project folder `~/DISProj`. From here run the following commands:
-```console
+```bash
 ~/DISProj$ source bin/activate
 ~/DISProj$ export FLASK_APP=source/main.py
 ~/DISProj$ flask run
@@ -28,7 +28,7 @@ navigate to the project folder `~/DISProj`. From here run the following commands
 
 This WebAPP should now run with the following code in the terminal:
 
-```apache
+```apacheconf
 * Serving Flask app 'source/main.py'
 * Debug mode: off
 WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
