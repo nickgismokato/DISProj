@@ -24,6 +24,11 @@ def map():
     error = None
     return render_template('map.html', error=error)
 
+@app.route("/table", methods=['GET','POST'])
+def table():
+    userList = [["Nick",90], ["Carl",5], ["Asger",-1]]
+    return render_template("table.html", myList = userList)
+
 @app.route("/user/<name>")
 def user(name):
     ageUser = rand.randint(0,99)
