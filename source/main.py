@@ -16,7 +16,8 @@ class user:
         self.name = name
         self.UID = UID
         loggedIn = True
-    
+    def status(self,St):
+        self.loggedIn = St
 
 initialized = False
 
