@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS Posts(
 );
 
 CREATE TABLE IF NOT EXISTS Replies(
-	CID serial not null PRIMARY KEY,
+	RID serial not null PRIMARY KEY,
 	Content varchar(300),
 	ReplyDate date,
 	UID_pk int references Users(UID) ON DELETE SET NULL,

@@ -15,10 +15,40 @@ def db_init():
         cur = conn.cursor()
 
         #fetch init script
-        with open('Initdatabase.sql','r') as ini_file:
-            content = ini_file.read()
+        with open('Initdatabase.sql','r') as sql_file:
+            content = sql_file.read()
 
         cur.execute(content)
+
+        conn.commit()
+
+    except Exception as error:
+        print(error)
+
+    finally:
+        if conn != None:
+            cur.close()
+            conn.close()
+
+#Create municipality, arguments: municipalityname = string, name of municipality
+def createmunicipality(municipalityname):
+    conn = None
+    conf = config()
+
+    try:
+        #connection
+        conn = psycopg2.connect(conf)
+
+        #cursor
+        cur = conn.cursor()
+
+        #fetch init script
+        with open('createmunicipality.sql','r') as sql_file:
+            content = sql_file.read()
+
+        values = (municipalityname)
+
+        cur.execute(content, [values])
 
         conn.commit()
 
@@ -48,8 +78,8 @@ def register(username, password):
         cur = conn.cursor()
 
         #fetch init script
-        with open('register.sql','r') as register_file:
-            content = register_file.read()
+        with open('register.sql','r') as sql_file:
+            content = sql_file.read()
 
         values = (username, password, today, True)
 
@@ -95,6 +125,7 @@ def deleteuser(username):
             cur.close()
             conn.close()
 
+
 #Create a post, arguments: username = string, name of user. municipalityname = string, name of municipality. text = string, content of post
 def createpost(username, municipalityname, text):
     today = date.today()
@@ -109,8 +140,8 @@ def createpost(username, municipalityname, text):
         cur = conn.cursor()
 
         #fetch init script
-        with open('createpost.sql','r') as post_file:
-            content = post_file.read()
+        with open('createpost.sql','r') as sql_file:
+            content = sql_file.read()
 
         cur.execute('''
         SELECT uid
@@ -185,8 +216,8 @@ def createreply(username, postid, text):
         cur = conn.cursor()
 
         #fetch init script
-        with open('createreply.sql','r') as post_file:
-            content = post_file.read()
+        with open('createreply.sql','r') as sql_file:
+            content = sql_file.read()
 
         cur.execute('''
         SELECT uid
@@ -211,12 +242,8 @@ def createreply(username, postid, text):
             cur.close()
             conn.close()
 
-def getmunicipality(name):
-    return
-
-#Subscribes a user to a municipality, arguments: uesrname = string, name of user. municipalityname = string, name of municipality
-def subscribe(username, municipalityname):
-    today = date.today()
+#Delete a reply, arguments: replyid = integer, id of reply
+def deletereply(replyid):
     conn = None
     conf = config()
 
@@ -228,8 +255,41 @@ def subscribe(username, municipalityname):
         cur = conn.cursor()
 
         #fetch init script
-        with open('subscribers.sql','r') as post_file:
-            content = post_file.read()
+        with open('deletereply.sql','r') as sql_file:
+            content = sql_file.read()
+
+        values = (replyid)
+
+        cur.execute(content, [values])
+
+        conn.commit()
+
+    except Exception as error:
+        print(error)
+
+    finally:
+        if conn != None:
+            cur.close()
+            conn.close()
+
+def getmunicipality(name):
+    return
+
+#Subscribes a user to a municipality, arguments: uesrname = string, name of user. municipalityname = string, name of municipality
+def subscribe(username, municipalityname):
+    conn = None
+    conf = config()
+
+    try:
+        #connection
+        conn = psycopg2.connect(conf)
+
+        #cursor
+        cur = conn.cursor()
+
+        #fetch init script
+        with open('subscribers.sql','r') as sql_file:
+            content = sql_file.read()
 
         cur.execute('''
         SELECT uid
@@ -259,4 +319,3 @@ def subscribe(username, municipalityname):
         if conn != None:
             cur.close()
             conn.close()
-

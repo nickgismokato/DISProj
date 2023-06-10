@@ -1,0 +1,1 @@
+DELETE FROM replies WHERE rid = %s
