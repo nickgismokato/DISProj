@@ -74,6 +74,19 @@ def login():
     else:
         return redirect(url_for('index'))
 
+# might need to be removed
+@app.route("/auth/index", methods=['GET','POST'])
+def logout():
+    if userClass.loggedIn == True:
+        error = None
+        if request.method == 'POST':
+            logOut()
+        else:
+            userClass.printStatus()
+            return redirect(url_for('login.html'))
+    return redirect(url_for('index'))
+
+
 @app.route("/auth/register", methods = ['GET','POST'])
 def register():
     error = None
