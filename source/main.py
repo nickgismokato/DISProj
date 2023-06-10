@@ -37,6 +37,10 @@ def login():
             return redirect(url_for('index'))
     return render_template('auth/login.html', error=error)
 
+@app.route("/auth/register", methods = ['GET','POST'])
+def register():
+    return render_template("auth/register.html")
+
 @app.route("/map", methods=['GET','POST'])
 def map():
     error = None
@@ -46,6 +50,8 @@ def map():
 def table():
     userList = [["Nick",90], ["Carl",5], ["Asger",-1]]
     return render_template("table.html", myList = userList)
+
+
 
 @app.route("/user/<name>")
 def user(name):

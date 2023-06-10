@@ -15,6 +15,10 @@
           request.form.password }}">
         <input class="btn btn-default" type="submit" value="Login">
       </form>
+      <h1>Or Create a user:</h1>
+      <form action="{{ url_for('register') }}">
+        <input class="btn btn-default" type="submit" value="Create User">
+      </form>
       {% if error %}
         <p class="error"><strong>Error:</strong> {{ error }}
       {% endif %}
