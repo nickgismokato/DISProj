@@ -4,16 +4,28 @@ import random as rand
 
 app = Flask(__name__)
 
-from db.db_interface import db_init
+from db.db_interface import *
 from db.dbparameters import *
 
+from data.Muni import *
 
 
 #Localhost:5000/
 @app.route("/", methods=['GET','POST'])
 def index():
     db_init()
+    komm = tsvClass()
+    for KOMS in komm.muni:
+        createmunicipality(KOMS[0])
     return render_template("index.html")
+
+@app.route('/threads', methods = ['GET', 'POST'])
+def threads():
+    # Assuming you have a database connection and a cursor object
+    cursor.execute("SELECT * FROM threads") #OR SOME OTHER QUERY
+    threads = cursor.fetchall()
+    municipality = "Your Municipality"  # Replace with the actual municipality value
+    return render_template('threads.html', threads=threads, municipality=municipality)
 
 @app.route("/auth/login", methods=['GET','POST'])
 def login():

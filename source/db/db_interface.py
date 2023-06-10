@@ -9,7 +9,7 @@ def db_init():
     try:
         #connection
         conn = psycopg2.connect(conf)
-
+        print("Connected")
         #cursor
         cur = conn.cursor()
 
