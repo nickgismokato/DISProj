@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 
 #Localhost:8080/
-@app.route("/")
+@app.route("/", methods=['GET','POST'])
 def index():
     return render_template("index.html")
 
@@ -20,6 +20,11 @@ def login():
         else:
             return redirect(url_for('index'))
     return render_template('auth/login.html', error=error)
+
+@app.route("/templates/map", methods=['GET','POST'])
+def map():
+    error = None
+    return render_template('template/map.html', error=error)
 
 @app.route("/user/<name>")
 def user(name):
