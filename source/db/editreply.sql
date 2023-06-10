@@ -1,0 +1,1 @@
+UPDATE replies set content = %s where rid = %s AND uid_pk = %s

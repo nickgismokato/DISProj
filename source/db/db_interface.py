@@ -6,7 +6,6 @@ from db.dbparameters import params
 def db_init():
     conn = None
     conf = params()
-    print("Hello World!")
     try:
         #connection
         conn = psycopg2.connect(conf)
@@ -15,7 +14,7 @@ def db_init():
         cur = conn.cursor()
 
         #fetch init script
-        with open('Initdatabase.sql','r') as sql_file:
+        with open('source/db/Initdatabase.sql','r') as sql_file:
             content = sql_file.read()
 
         cur.execute(content)
@@ -43,7 +42,7 @@ def createmunicipality(municipalityname):
         cur = conn.cursor()
 
         #fetch init script
-        with open('createmunicipality.sql','r') as sql_file:
+        with open('source/db/createmunicipality.sql','r') as sql_file:
             content = sql_file.read()
 
         values = (municipalityname)
@@ -78,7 +77,7 @@ def register(username, password):
         cur = conn.cursor()
 
         #fetch init script
-        with open('register.sql','r') as sql_file:
+        with open('source/db/register.sql','r') as sql_file:
             content = sql_file.read()
 
         values = (username, password, today, True)
@@ -108,7 +107,7 @@ def deleteuser(username):
         cur = conn.cursor()
 
         #fetch init script
-        with open('deleteuser.sql','r') as delete_file:
+        with open('source/db/deleteuser.sql','r') as delete_file:
             content = delete_file.read()
 
         values = (username)
@@ -125,9 +124,8 @@ def deleteuser(username):
             cur.close()
             conn.close()
 
-
-#Create a post, arguments: username = string, name of user. municipalityname = string, name of municipality. text = string, content of post
-def createpost(username, municipalityname, text):
+#Create a post, arguments: userid = integer, id of user. municipalityname = string, name of municipality. text = string, content of post
+def createpost(userid, municipalityname, text):
     today = date.today()
     conn = None
     conf = params()
@@ -140,15 +138,8 @@ def createpost(username, municipalityname, text):
         cur = conn.cursor()
 
         #fetch init script
-        with open('createpost.sql','r') as sql_file:
+        with open('source/db/createpost.sql','r') as sql_file:
             content = sql_file.read()
-
-        cur.execute('''
-        SELECT uid
-        FROM users
-        WHERE username = %s
-        ''', [username])
-        userpk = cur.fetchone()
 
         cur.execute('''
         SELECT kuid
@@ -158,7 +149,7 @@ def createpost(username, municipalityname, text):
         minicipalitypk = cur.fetchone()
 
 
-        values = (text, today, minicipalitypk[0], userpk[0])
+        values = (text, today, minicipalitypk[0], userid)
 
         cur.execute(content, values)
 
@@ -173,8 +164,33 @@ def createpost(username, municipalityname, text):
             conn.close()
 
 #Edit a post, arugments: userid = integer, id of user. postid = integer, id of post. text = string, content 
+#must call the text in double quotations and single quotes inside "'text'" 
 def editpost(userid, postid, text):
-    return
+    conn = None
+    conf = params()
+
+    try:
+        #connection
+        conn = psycopg2.connect(conf)
+
+        #cursor
+        cur = conn.cursor()
+
+        #fetch script
+        with open('source/db/editpost.sql','r') as sql_file:
+            content = sql_file.read()
+        values = (text, postid, userid)
+        cur.execute(content % values)
+
+        conn.commit()
+
+    except Exception as error:
+        print(error)
+
+    finally:
+        if conn != None:
+            cur.close()
+            conn.close()
 
 #Delete a post, arguments: postid = integer, id of post
 def deletepost(postid):
@@ -189,7 +205,7 @@ def deletepost(postid):
         cur = conn.cursor()
 
         #fetch init script
-        with open('deletepost.sql','r') as delete_file:
+        with open('source/db/deletepost.sql','r') as delete_file:
             content = delete_file.read()
 
         values = (postid)
@@ -206,8 +222,8 @@ def deletepost(postid):
             cur.close()
             conn.close()
 
-#Create a reply, arguments: username = string, name of user. postid = integer, id of post. text = string, content of reply
-def createreply(username, postid, text):
+#Create a reply, arguments: userid = int, id of user. postid = integer, id of post. text = string, content of reply
+def createreply(userid, postid, text):
     today = date.today()
     conn = None
     conf = params()
@@ -220,19 +236,10 @@ def createreply(username, postid, text):
         cur = conn.cursor()
 
         #fetch init script
-        with open('createreply.sql','r') as sql_file:
+        with open('source/db/createreply.sql','r') as sql_file:
             content = sql_file.read()
 
-        cur.execute('''
-        SELECT uid
-        FROM users
-        WHERE username = %s
-        ''', [username])
-        userpk = cur.fetchone()
-
-
-
-        values = (text, today, userpk[0], postid)
+        values = (text, today, userid, postid)
 
         cur.execute(content, values)
 
@@ -245,6 +252,36 @@ def createreply(username, postid, text):
         if conn != None:
             cur.close()
             conn.close()
+
+#Edit a post, arugments: userid = integer, id of user. replyid = integer, id of post. text = string, content 
+#must call the text in double quotations and single quotes inside "'text'" 
+def editreply(userid, replyid, text):
+    conn = None
+    conf = params()
+
+    try:
+        #connection
+        conn = psycopg2.connect(conf)
+
+        #cursor
+        cur = conn.cursor()
+
+        #fetch script
+        with open('source/db/editreply.sql','r') as sql_file:
+            content = sql_file.read()
+        values = (text, replyid, userid)
+        cur.execute(content % values)
+
+        conn.commit()
+
+    except Exception as error:
+        print(error)
+
+    finally:
+        if conn != None:
+            cur.close()
+            conn.close()
+
 
 #Delete a reply, arguments: replyid = integer, id of reply
 def deletereply(replyid):
@@ -259,7 +296,7 @@ def deletereply(replyid):
         cur = conn.cursor()
 
         #fetch init script
-        with open('deletereply.sql','r') as sql_file:
+        with open('source/db/deletereply.sql','r') as sql_file:
             content = sql_file.read()
 
         values = (replyid)
@@ -292,7 +329,7 @@ def subscribe(username, municipalityname):
         cur = conn.cursor()
 
         #fetch init script
-        with open('subscribers.sql','r') as sql_file:
+        with open('source/db/subscribers.sql','r') as sql_file:
             content = sql_file.read()
 
         cur.execute('''
