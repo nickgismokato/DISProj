@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <nav>
+        <ul>
+          <li><a href="{{ url_for('index') }}">mainpage</a></li>
+          <li><a href="{{ url_for('login') }}">Login</a></li>
+          <li><a href="{{ url_for('map') }}">See the map!</a></li>
+        </ul>
+      </nav>
+  
+  <meta charset="UTF-8">
+  <title>Your Website Title</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/universal.css') }}"> <!-- Link to your CSS file -->
+</head>
