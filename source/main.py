@@ -12,6 +12,7 @@ from db.dbparameters import *
 #Localhost:5000/
 @app.route("/", methods=['GET','POST'])
 def index():
+    db_init()
     return render_template("index.html")
 
 @app.route("/auth/login", methods=['GET','POST'])
@@ -41,5 +42,4 @@ def user(name):
 
 if __name__ == "__main__":
     app.debug = True
-    db_init()
     app.run(host="localhost", port=5000, debug=True)

@@ -6,7 +6,7 @@ from db.dbparameters import params
 def db_init():
     conn = None
     conf = params()
-
+    print("Hello World!")
     try:
         #connection
         conn = psycopg2.connect(conf)
