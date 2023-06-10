@@ -62,7 +62,38 @@ def createmunicipality(municipalityname):
 
 #login a user, arguments: username = string, name of user. password = string, user password
 def login(username, password):
-    return
+    conn = None
+    conf = params()
+    uid = -1
+
+    try:
+        #connection
+        conn = psycopg2.connect(conf)
+
+        #cursor
+        cur = conn.cursor()
+
+        #fetch script
+        with open('source/db/login.sql','r') as sql_file:
+            content = sql_file.read()
+
+        values = (username, password)
+
+        cur.execute(content, values)
+
+        #fetch the uid of the logged in user
+        uid = cur.fetchone()[0]
+        conn.commit()
+
+    except Exception as error:
+        return uid
+
+    finally:
+        if conn != None:
+            cur.close()
+            conn.close()
+
+        return uid
 
 #Register a user, arguments: username = string, name of user. password = string, user password
 def registerUser(username, password):
