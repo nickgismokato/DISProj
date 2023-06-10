@@ -1,0 +1,1 @@
+SELECT uid FROM users WHERE username = %s AND password = %s
