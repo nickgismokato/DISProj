@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS Kommune(
 	KuID serial not null PRIMARY KEY,
-	Name varchar(100)
+	Name varchar(100) UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS Kom_Shape(
