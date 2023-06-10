@@ -92,7 +92,7 @@ def loginUser(username, password):
         if conn != None:
             cur.close()
             conn.close()
-
+        updateStatus(username, True)
         return uid
 
 #Register a user, arguments: username = string, name of user. password = string, user password
@@ -128,6 +128,35 @@ def registerUser(username, password):
             conn.close()
         #print(errorRet)
         return errorRet
+
+def updateStatus(username, val):
+    conn = None
+    conf = params()
+
+    try:
+        #connection
+        conn = psycopg2.connect(conf)
+
+        #cursor
+        cur = conn.cursor()
+
+        #fetch init script
+        with open('source/db/updatestatus.sql','r') as delete_file:
+            content = delete_file.read()
+
+        values = (val, username)
+
+        cur.execute(content, values)
+
+        conn.commit()
+
+    except Exception as error:
+        print(error)
+
+    finally:
+        if conn != None:
+            cur.close()
+            conn.close()
 
 #Delete a user, arguments: username = string, name of user
 def deleteuser(username):
