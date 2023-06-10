@@ -39,7 +39,14 @@ def login():
 
 @app.route("/auth/register", methods = ['GET','POST'])
 def register():
-    return render_template("auth/register.html")
+    error = None
+    if request.method == 'POST':
+        error = registerUser(request.form['username'], request.form['password'])
+        if error != None:
+            None
+        else:
+            return redirect(url_for('index'))
+    return render_template("auth/register.html", error = error)
 
 @app.route("/map", methods=['GET','POST'])
 def map():
@@ -50,8 +57,6 @@ def map():
 def table():
     userList = [["Nick",90], ["Carl",5], ["Asger",-1]]
     return render_template("table.html", myList = userList)
-
-
 
 @app.route("/user/<name>")
 def user(name):

@@ -52,23 +52,24 @@ def createmunicipality(municipalityname):
         conn.commit()
 
     except Exception as error:
-        return 
+        None
 
     finally:
         if conn != None:
             cur.close()
             conn.close()
+        return
 
 #login a user, arguments: username = string, name of user. password = string, user password
 def login(username, password):
     return
 
 #Register a user, arguments: username = string, name of user. password = string, user password
-def register(username, password):
+def registerUser(username, password):
     today = date.today()
     conn = None
     conf = params()
-
+    errorRet = None
     try:
         #connection
         conn = psycopg2.connect(conf)
@@ -87,12 +88,15 @@ def register(username, password):
         conn.commit()
 
     except Exception as error:
+        errorRet = error
         print(error)
 
     finally:
         if conn != None:
             cur.close()
             conn.close()
+        #print(errorRet)
+        return errorRet
 
 #Delete a user, arguments: username = string, name of user
 def deleteuser(username):
