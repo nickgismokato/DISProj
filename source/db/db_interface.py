@@ -314,6 +314,7 @@ def deletepost(postid):
 def fetchpost(municipalityname):
     conn = None
     conf = params()
+    posts = []
 
     try:
         #connection
@@ -329,7 +330,7 @@ def fetchpost(municipalityname):
         values = (municipalityname)
 
         cur.execute(content, [values])
-
+        posts = cur.fetchall()
         conn.commit()
 
     except Exception as error:
@@ -339,6 +340,7 @@ def fetchpost(municipalityname):
         if conn != None:
             cur.close()
             conn.close()
+        return posts
 
 #Create a reply, arguments: userid = int, id of user. postid = integer, id of post. text = string, content of reply
 def createreply(userid, postid, text):
@@ -531,5 +533,4 @@ def getsubscribed(uid):
             cur.close()
             conn.close()
         return kommuner
-    
 
