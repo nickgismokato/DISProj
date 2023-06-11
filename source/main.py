@@ -94,7 +94,7 @@ def login():
                 return redirect(url_for('index'))
         return render_template('auth/login.html', error=error)
     else:
-        return redirect(url_for('index'))
+        return redirect(url_for('profile'))
 
 # might need to be removed
 @app.route("/logout", methods=['GET','POST'])
@@ -165,30 +165,38 @@ def dropdown():
 
 @app.route('/profile', methods=['GET','POST'])
 def profile():
-    listYouCanSubscribeTo()
-    print(userClass.UserSubs)
-    if userClass.name == None:
-        nameUser = "Default"
+    if userClass.loggedIn == True:
+        listYouCanSubscribeTo()
+        print(userClass.UserSubs)
+        if userClass.name == None:
+            nameUser = "Default"
+        else:
+            nameUser = userClass.name  
+        return render_template('profile.html', nameUser = nameUser, UserSubs = userClass.UserSubs, myList = listYouCanSubscribeTo())
     else:
-        nameUser = userClass.name  
-    return render_template('profile.html', nameUser = nameUser, UserSubs = userClass.UserSubs, myList = listYouCanSubscribeTo())
+        return redirect(url_for('login'))
 
 @app.route('/kommune/<name>')
 def kommune(name):
-    cancer = fetchpost(name)
-    return render_template("kommune.html", name = name, cList = cancer)
+    if userClass.loggedIn == True:
+        cancer = fetchpost(name)
+        return render_template("kommune.html", name = name, cList = cancer)
+    else: 
+        return redirect(url_for('login'))
 
 @app.route('/kommune/<name1>/<name2>', methods=['GET','POST'])
 def getToPost(name1, name2):
-    strname2 = str(name2)
-    return render_template("post.html", name1 = name1, name2 = strname2)
+    if userClass.loggedIn == True:
+        strname2 = str(name2)
+        return render_template("post.html", name1 = name1, name2 = strname2)
+    else: 
+        return redirect(url_for('login'))
 
 @app.route('/deleteuser',  methods=['GET','POST'])
 def deleteUser():
     if userClass.loggedIn == True:
         deleteuser(userClass.name)
         userClass.loggingOut()
-
     return render_template('index.html')
 
 
