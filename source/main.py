@@ -40,8 +40,7 @@ def getSubs(uid):
 
 def listYouCanSubscribeTo():
     TotalList = getmunicipalities()
-    returnList = list(set(TotalList)-set(userClass.UserSubs))
-    print(returnList)
+    returnList = sorted(list(set(TotalList)-set(userClass.UserSubs)))
     return returnList
 def userSubsribe(muniName):
     subscribe(userClass.UID, muniName)
@@ -143,7 +142,7 @@ def profile():
         nameUser = "Default"
     else:
         nameUser = userClass.name  
-    return render_template('profile.html', nameUser = nameUser, myList = userClass.UserSubs)
+    return render_template('profile.html', nameUser = nameUser, UserSubs = userClass.UserSubs, myList = listYouCanSubscribeTo())
 
 if __name__ == "__main__":
     app.debug = True

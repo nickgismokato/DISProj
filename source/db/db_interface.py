@@ -16,10 +16,10 @@ def db_init():
         #fetch init script
         with open('source/db/Initdatabase.sql','r') as sql_file:
             content = sql_file.read()
-        with open('source/db/demo.sql','r') as sql_file:
-            contentdemo = sql_file.read()
+        #with open('source/db/demo.sql','r') as sql_file:
+        #    contentdemo = sql_file.read()
         cur.execute(content)
-        cur.execute(contentdemo)
+        #cur.execute(contentdemo)
         conn.commit()
 
     except Exception as error:
