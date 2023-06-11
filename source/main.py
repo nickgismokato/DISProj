@@ -43,7 +43,7 @@ def listYouCanSubscribeTo():
     returnList = sorted(list(set(TotalList)-set(userClass.UserSubs)))
     return returnList
 def userSubsribe(muniName):
-    subscribe(userClass.UID, muniName)
+    subscribeUser(userClass.UID, muniName)
     userClass.updateSubs()
 
 #Initialize all the necesary stuff from the beginning
@@ -103,6 +103,14 @@ def logout():
     else:
         return redirect(url_for('login'))
     return redirect(url_for('profile'))
+
+@app.route("/subscribe", methods=['GET','POST'])
+def subscribe():
+    if request.method == "POST":
+        print(request.form['Subscribe'])
+        userSubsribe(request.form['Subscribe'])
+        userClass.updateSubs()
+    return redirect('profile')
 
 
 @app.route("/auth/register", methods = ['GET','POST'])
