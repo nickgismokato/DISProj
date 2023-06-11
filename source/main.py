@@ -19,6 +19,7 @@ class user:
         self.name = user
         self.UID = uid
         self.loggedIn = True
+        self.UserSubs = getSubs(self.UID)
     def loggingOut(self):
         self.loggedIn = False
         self.name = None
@@ -33,7 +34,13 @@ initialized = False
 userClass = user()
 
 def getSubs(uid):
-    return []
+    return getsubscribed(uid)
+
+def listYouCanSubscribeTo():
+    TotalList = getmunicipalities()
+    returnList = list(set(TotalList)-set(userClass.UserSubs))
+    print(returnList)
+    return returnList
 
 #Initialize all the necesary stuff from the beginning
 def initStart():
@@ -126,7 +133,7 @@ def dropdown():
 
 @app.route('/profile', methods=['GET','POST'])
 def profile():
-
+    listYouCanSubscribeTo()
     if userClass.name == None:
         nameUser = "Default"
     else:
