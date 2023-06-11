@@ -25,6 +25,8 @@ class user:
         self.name = None
         self.UID = None
         self.UserSubs = []
+    def updateSubs(self):
+        self.UserSubs = getSubs(self.UID)
     def printStatus(self):
         print(self.loggedIn)
         print(self.name)
@@ -41,6 +43,9 @@ def listYouCanSubscribeTo():
     returnList = list(set(TotalList)-set(userClass.UserSubs))
     print(returnList)
     return returnList
+def userSubsribe(muniName):
+    subscribe(userClass.UID, muniName)
+    userClass.updateSubs()
 
 #Initialize all the necesary stuff from the beginning
 def initStart():
