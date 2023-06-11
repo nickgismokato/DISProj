@@ -3,13 +3,6 @@ CREATE TABLE IF NOT EXISTS Kommune(
 	Name varchar(100) UNIQUE
 );
 
-CREATE TABLE IF NOT EXISTS Kom_Shape(
-	ShapeID serial not null PRIMARY KEY,
-	KuID_pk int not null references Kommune(KuID) ON DELETE CASCADE,
-	Lon float not null,
-	Lat float not null
-);
-
 CREATE TABLE IF NOT EXISTS Users(
 	UID serial not null PRIMARY KEY,
 	Username varchar(16) UNIQUE,
