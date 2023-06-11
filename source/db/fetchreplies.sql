@@ -1,0 +1,1 @@
+SELECT * FROM replies WHERE pid_pk = %s
