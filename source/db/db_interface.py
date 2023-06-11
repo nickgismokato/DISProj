@@ -16,10 +16,32 @@ def db_init():
         #fetch init script
         with open('source/db/Initdatabase.sql','r') as sql_file:
             content = sql_file.read()
-        #with open('source/db/demo.sql','r') as sql_file:
-        #    contentdemo = sql_file.read()
         cur.execute(content)
-        #cur.execute(contentdemo)
+        conn.commit()
+
+    except Exception as error:
+        print(error)
+
+    finally:
+        if conn != None:
+            cur.close()
+            conn.close()
+
+
+def db_demo():
+    conn = None
+    conf = params()
+    try:
+        #connection
+        conn = psycopg2.connect(conf)
+
+        #cursor
+        cur = conn.cursor()
+
+        #fetch init script
+        with open('source/db/demo.sql','r') as sql_file:
+            contentdemo = sql_file.read()
+        cur.execute(contentdemo)
         conn.commit()
 
     except Exception as error:
@@ -46,8 +68,7 @@ def createmunicipality(municipalityname):
         with open('source/db/createmunicipality.sql','r') as sql_file:
             content = sql_file.read()
 
-        values = (municipalityname)
-
+        values = (str(municipalityname).strip())
         cur.execute(content, [values])
 
         conn.commit()
@@ -482,3 +503,4 @@ def getsubscribed(uid):
             conn.close()
         return kommuner
     
+
