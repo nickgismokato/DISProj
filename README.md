@@ -69,3 +69,5 @@ When on a post you should only be able to see the post which is unique for the m
 
 Also no there currently is no way of deleting a post.
 
+## shortcomings
+We have created several features that manipulate the database. However, due to inexperience in web-development and time-constraints, these have not been implemented. Also, we have switched between inline styling and a universal stylesheet. This is bad practice, but we only realised this at the end.
