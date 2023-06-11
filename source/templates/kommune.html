@@ -54,8 +54,8 @@
     <table>
       <tr>
         <th>Post ID</th>
+        <th>Contents</th>
         <th>Date</th>
-        <th>Area ID</th>
         <th>User ID</th>
         <th>Contents</th>
       </tr>
@@ -67,7 +67,7 @@
           <td>{{ post[3] }}</td>
           <td>
             <div class="post-contents">
-              {{ post.contents }}
+              {{ post[1] }}
             </div>
           </td>
         </tr>
