@@ -311,6 +311,35 @@ def deletepost(postid):
             cur.close()
             conn.close()
 
+def fetchpost(municipalityname):
+    conn = None
+    conf = params()
+
+    try:
+        #connection
+        conn = psycopg2.connect(conf)
+
+        #cursor
+        cur = conn.cursor()
+
+        #fetch init script
+        with open('source/db/fetchpost.sql','r') as delete_file:
+            content = delete_file.read()
+
+        values = (municipalityname)
+
+        cur.execute(content, [values])
+
+        conn.commit()
+
+    except Exception as error:
+        print(error)
+
+    finally:
+        if conn != None:
+            cur.close()
+            conn.close()
+
 #Create a reply, arguments: userid = int, id of user. postid = integer, id of post. text = string, content of reply
 def createreply(userid, postid, text):
     today = date.today()
