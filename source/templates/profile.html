@@ -44,14 +44,14 @@
         <thead>
             <tr>
                 <td> Municipalities </td>
-                <td> Ting </td>
+                <td> Links </td>
             </tr>
         </thead>
         <tbody>
             {% for elm in UserSubs %}
                 <tr>
                     <td>{{ elm[1] }}</td>
-                    <td><a href="http://127.0.0.1:5000/kommune/{{ elm[1] }}" target="_blank">Click Here</a></td>
+                    <td><a href="http://127.0.0.1:5000/kommune/{{ elm[1] }}" target="_self">Click Here</a></td>
                 </tr>
             {% endfor %}
         </tbody>
@@ -65,8 +65,8 @@
     <table border="1">
     <thead>
         <tr>
-            <td> Kommuner </td>
-            <td> Ting </td>
+            <td> Municipalities </td>
+            <td> Subscribe </td>
         </tr>
     </thead>
     <tbody>
