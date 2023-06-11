@@ -16,8 +16,10 @@ def db_init():
         #fetch init script
         with open('source/db/Initdatabase.sql','r') as sql_file:
             content = sql_file.read()
-
+        with open('source/db/demo.sql','r') as sql_file:
+            contentdemo = sql_file.read()
         cur.execute(content)
+        cur.execute(contentdemo)
 
         conn.commit()
 
@@ -86,6 +88,9 @@ def loginUser(username, password):
         conn.commit()
 
     except Exception as error:
+        if conn != None:
+            cur.close()
+            conn.close()
         return uid
 
     finally:
@@ -346,7 +351,6 @@ def editreply(userid, replyid, text):
             cur.close()
             conn.close()
 
-
 #Delete a reply, arguments: replyid = integer, id of reply
 def deletereply(replyid):
     conn = None
@@ -377,8 +381,37 @@ def deletereply(replyid):
             cur.close()
             conn.close()
 
-def getmunicipality(name):
-    return
+def getmunicipalities():
+    conn = None
+    conf = params()
+    kommuner = []
+
+    try:
+        #connection
+        conn = psycopg2.connect(conf)
+
+        #cursor
+        cur = conn.cursor()
+
+        #fetch script
+        with open('source/db/getmuni.sql','r') as sql_file:
+            content = sql_file.read()
+
+
+        cur.execute(content)
+
+        #fetch all municipalities
+        kommuner = cur.fetchall()
+        conn.commit()
+
+    except Exception as error:
+        None
+
+    finally:
+        if conn != None:
+            cur.close()
+            conn.close()
+        return kommuner
 
 #Subscribes a user to a municipality, arguments: uesrname = string, name of user. municipalityname = string, name of municipality
 def subscribe(username, municipalityname):
@@ -424,3 +457,35 @@ def subscribe(username, municipalityname):
         if conn != None:
             cur.close()
             conn.close()
+
+def getsubscribed(uid):
+    conn = None
+    conf = params()
+    kommuner = []
+
+    try:
+        #connection
+        conn = psycopg2.connect(conf)
+
+        #cursor
+        cur = conn.cursor()
+
+        #fetch init script
+        with open('source/db/getsubscribed.sql','r') as sql_file:
+            content = sql_file.read()
+
+
+        values = (uid)
+
+        cur.execute(content, [values])
+        kommuner = cur.fetchall()
+        conn.commit()
+
+    except Exception as error:
+        None
+
+    finally:
+        if conn != None:
+            cur.close()
+            conn.close()
+        return kommuner

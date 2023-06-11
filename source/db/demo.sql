@@ -52,11 +52,11 @@ VALUES
 ((SELECT KuID FROM Kommune WHERE Name = 'Guldborgsund'), (SELECT UID FROM Users WHERE Username = 'Aygun')),
 ((SELECT KuID FROM Kommune WHERE Name = 'Guldborgsund'), (SELECT UID FROM Users WHERE Username = 'Abbasov')),
 ((SELECT KuID FROM Kommune WHERE Name = 'Guldborgsund'), (SELECT UID FROM Users WHERE Username = 'Aysel')),
--- Fanø
-((SELECT KuID FROM Kommune WHERE Name = 'Fanø'), (SELECT UID FROM Users WHERE Username = 'Nigar')),
-((SELECT KuID FROM Kommune WHERE Name = 'Fanø'), (SELECT UID FROM Users WHERE Username = 'Mehdiyev')),
-((SELECT KuID FROM Kommune WHERE Name = 'Fanø'), (SELECT UID FROM Users WHERE Username = 'Ramin')),
-((SELECT KuID FROM Kommune WHERE Name = 'Fanø'), (SELECT UID FROM Users WHERE Username = 'Mammadov')),
+-- Fanoe
+((SELECT KuID FROM Kommune WHERE Name = 'Fanoe'), (SELECT UID FROM Users WHERE Username = 'Nigar')),
+((SELECT KuID FROM Kommune WHERE Name = 'Fanoe'), (SELECT UID FROM Users WHERE Username = 'Mehdiyev')),
+((SELECT KuID FROM Kommune WHERE Name = 'Fanoe'), (SELECT UID FROM Users WHERE Username = 'Ramin')),
+((SELECT KuID FROM Kommune WHERE Name = 'Fanoe'), (SELECT UID FROM Users WHERE Username = 'Mammadov')),
 -- Copenhagen
 ((SELECT KuID FROM Kommune WHERE Name = 'Copenhagen'), (SELECT UID FROM Users WHERE Username = 'Farid')),
 ((SELECT KuID FROM Kommune WHERE Name = 'Copenhagen'), (SELECT UID FROM Users WHERE Username = 'Huseynova')),
@@ -65,20 +65,20 @@ VALUES
 -- Vordingborg
 ((SELECT KuID FROM Kommune WHERE Name = 'Vordingborg'), (SELECT UID FROM Users WHERE Username = 'Huseynova')),
 ((SELECT KuID FROM Kommune WHERE Name = 'Vordingborg'), (SELECT UID FROM Users WHERE Username = 'Guliyev')),
--- Tønder
-((SELECT KuID FROM Kommune WHERE Name = 'Tønder'), (SELECT UID FROM Users WHERE Username = 'Huseynova')),
-((SELECT KuID FROM Kommune WHERE Name = 'Tønder'), (SELECT UID FROM Users WHERE Username = 'Gurbanov')),
-((SELECT KuID FROM Kommune WHERE Name = 'Tønder'), (SELECT UID FROM Users WHERE Username = 'Farid')),
+-- Toender
+((SELECT KuID FROM Kommune WHERE Name = 'Toender'), (SELECT UID FROM Users WHERE Username = 'Huseynova')),
+((SELECT KuID FROM Kommune WHERE Name = 'Toender'), (SELECT UID FROM Users WHERE Username = 'Gurbanov')),
+((SELECT KuID FROM Kommune WHERE Name = 'Toender'), (SELECT UID FROM Users WHERE Username = 'Farid')),
 -- Langeland
 ((SELECT KuID FROM Kommune WHERE Name = 'Langeland'), (SELECT UID FROM Users WHERE Username = 'Allahverdiyev')),
 ((SELECT KuID FROM Kommune WHERE Name = 'Langeland'), (SELECT UID FROM Users WHERE Username = 'Rustamova')),
 ((SELECT KuID FROM Kommune WHERE Name = 'Langeland'), (SELECT UID FROM Users WHERE Username = 'Guliyev')),
 ((SELECT KuID FROM Kommune WHERE Name = 'Langeland'), (SELECT UID FROM Users WHERE Username = 'Lala')),
--- Læsø
-((SELECT KuID FROM Kommune WHERE Name = 'Læsø'), (SELECT UID FROM Users WHERE Username = 'Rustamova')),
-((SELECT KuID FROM Kommune WHERE Name = 'Læsø'), (SELECT UID FROM Users WHERE Username = 'Allahverdiyev')),
-((SELECT KuID FROM Kommune WHERE Name = 'Læsø'), (SELECT UID FROM Users WHERE Username = 'Lala')),
-((SELECT KuID FROM Kommune WHERE Name = 'Læsø'), (SELECT UID FROM Users WHERE Username = 'Guliyev'))
+-- Laesoe
+((SELECT KuID FROM Kommune WHERE Name = 'Laesoe'), (SELECT UID FROM Users WHERE Username = 'Rustamova')),
+((SELECT KuID FROM Kommune WHERE Name = 'Laesoe'), (SELECT UID FROM Users WHERE Username = 'Allahverdiyev')),
+((SELECT KuID FROM Kommune WHERE Name = 'Laesoe'), (SELECT UID FROM Users WHERE Username = 'Lala')),
+((SELECT KuID FROM Kommune WHERE Name = 'Laesoe'), (SELECT UID FROM Users WHERE Username = 'Guliyev'));
 
 
 INSERT INTO posts (content, postdate, kuid_pk, uid_pk)
@@ -108,11 +108,11 @@ VALUES
 ('Anime lovers unite in Guldborgsund! #AnimeLove', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Guldborgsund'), (SELECT UID FROM Users WHERE Username = 'Aygun')),
 ('Guldborgsund website: Where memes come alive! #MemeMagic', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Guldborgsund'), (SELECT UID FROM Users WHERE Username = 'Abbasov')),
 ('Having a great laugh with farmer memes in Guldborgsund! #FarmHumor', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Guldborgsund'), (SELECT UID FROM Users WHERE Username = 'Aysel')),
--- Fanø
-('Democracy and memes collide in Fanø! #DemocracyMemes', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Fanø'), (SELECT UID FROM Users WHERE Username = 'Nigar')),
-('Sharing the best anime memes from Fanø! #AnimeMeme', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Fanø'), (SELECT UID FROM Users WHERE Username = 'Mehdiyev')),
-('Fanø website: A meme paradise! #MemeParadise', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Fanø'), (SELECT UID FROM Users WHERE Username = 'Ramin')),
-('Enjoying the fun of farmer memes in Fanø! #FunFarmers', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Fanø'), (SELECT UID FROM Users WHERE Username = 'Mammadov')),
+-- Fanoe
+('Democracy and memes collide in Fanoe! #DemocracyMemes', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Fanoe'), (SELECT UID FROM Users WHERE Username = 'Nigar')),
+('Sharing the best anime memes from Fanoe! #AnimeMeme', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Fanoe'), (SELECT UID FROM Users WHERE Username = 'Mehdiyev')),
+('Fanoe website: A meme paradise! #MemeParadise', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Fanoe'), (SELECT UID FROM Users WHERE Username = 'Ramin')),
+('Enjoying the fun of farmer memes in Fanoe! #FunFarmers', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Fanoe'), (SELECT UID FROM Users WHERE Username = 'Mammadov')),
 -- Copenhagen
 ('Living the dream in the meme capital of Denmark, Copenhagen! #CopenhagenMemes', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Copenhagen'), (SELECT UID FROM Users WHERE Username = 'Farid')),
 ('Geeking out over anime in vibrant Copenhagen! #AnimeGeeks', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Copenhagen'), (SELECT UID FROM Users WHERE Username = 'Huseynova')),
@@ -123,18 +123,19 @@ VALUES
 ('Sharing the best anime memes from Vordingborg! #AnimeMeme', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Vordingborg'), (SELECT UID FROM Users WHERE Username = 'Guliyev')),
 ('Vordingborg website: Memes for days! #MemeMania', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Vordingborg'), (SELECT UID FROM Users WHERE Username = 'Huseynova')),
 ('Having a great laugh with farmer memes in Vordingborg! #FarmHumor', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Vordingborg'), (SELECT UID FROM Users WHERE Username = 'Huseynova')),
--- Tønder
-('Tønder: Where memes make democracy fun! #FunDemocracy', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Tønder'), (SELECT UID FROM Users WHERE Username = 'Huseynova')),
-('Anime lovers rejoice in Tønder! #AnimeLove', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Tønder'), (SELECT UID FROM Users WHERE Username = 'Gurbanov')),
-('Tønder website: Meme central! #MemeCentral', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Tønder'), (SELECT UID FROM Users WHERE Username = 'Farid')),
-('Laughing together with farmer memes in Tønder! #FunnyFarmers', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Tønder'), (SELECT UID FROM Users WHERE Username = 'Huseynova')),
+-- Toender
+('Toender: Where memes make democracy fun! #FunDemocracy', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Toender'), (SELECT UID FROM Users WHERE Username = 'Huseynova')),
+('Anime lovers rejoice in Toender! #AnimeLove', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Toender'), (SELECT UID FROM Users WHERE Username = 'Gurbanov')),
+('Toender website: Meme central! #MemeCentral', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Toender'), (SELECT UID FROM Users WHERE Username = 'Farid')),
+('Laughing together with farmer memes in Toender! #FunnyFarmers', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Toender'), (SELECT UID FROM Users WHERE Username = 'Huseynova')),
 -- Langeland
 ('Langeland: Where memes and democracy thrive! #MemeThrive', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Langeland'), (SELECT UID FROM Users WHERE Username = 'Allahverdiyev')),
 ('Spreading anime love in picturesque Langeland! #AnimeLove', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Langeland'), (SELECT UID FROM Users WHERE Username = 'Rustamova')),
 ('Langeland website: Meme heaven! #MemeHeaven', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Langeland'), (SELECT UID FROM Users WHERE Username = 'Guliyev')),
 ('Enjoying the humor of farmer memes in Langeland! #FarmHumor', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Langeland'), (SELECT UID FROM Users WHERE Username = 'Lala')),
--- Læsø
-('Læsø: The island of memes and democracy! #MemeIsland', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Læsø'), (SELECT UID FROM Users WHERE Username = 'Rustamova')),
-('Geeking out over anime on the beautiful island of Læsø! #AnimeGeeks', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Læsø'), (SELECT UID FROM Users WHERE Username = 'Allahverdiyev')),
-('Læsø website: Memes that will make your day! #MemeMagic', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Læsø'), (SELECT UID FROM Users WHERE Username = 'Lala')),
-('Joining the laughter with farmer memes on Læsø! #HilariousFarmers', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Læsø'), (SELECT UID FROM Users WHERE Username = 'Guliyev'));
+-- Laesoe
+('Laesoe: The island of memes and democracy! #MemeIsland', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Laesoe'), (SELECT UID FROM Users WHERE Username = 'Rustamova')),
+('Geeking out over anime on the beautiful island of Laesoe! #AnimeGeeks', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Laesoe'), (SELECT UID FROM Users WHERE Username = 'Allahverdiyev')),
+('Laesoe website: Memes that will make your day! #MemeMagic', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Laesoe'), (SELECT UID FROM Users WHERE Username = 'Lala')),
+('Joining the laughter with farmer memes on Laesoe! #HilariousFarmers', '2023-06-11', (SELECT KuID FROM Kommune WHERE Name = 'Laesoe'), (SELECT UID FROM Users WHERE Username = 'Guliyev'));
+
