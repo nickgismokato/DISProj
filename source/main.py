@@ -114,6 +114,7 @@ def subscribe():
         userSubscribe(request.form['Subscribe'])
         userClass.updateSubs()
     return redirect('profile')
+
 @app.route("/unsubscribe", methods=['GET','POST'])
 def unsubscribe():
     if request.method == "POST":
@@ -121,10 +122,15 @@ def unsubscribe():
         userUnsubscribe(request.form['Unsubscribe'])
         userClass.updateSubs()
     return redirect('profile')
+
 @app.route("/submitpost", methods=['GET','POST'])
 def submitpost():
     if request.method == "POST":
-        return redirect('profile')
+        print("SUBMITPOST:")
+        print(request.form['komname'])
+        print(request.form['Post'])
+        createpost(userClass.UID, request.form['komname'], request.form['Post'])
+        return redirect(request.referrer)
 
 @app.route("/auth/register", methods = ['GET','POST'])
 def register():

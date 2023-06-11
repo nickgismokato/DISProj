@@ -29,6 +29,8 @@
     <form action="{{ url_for('submitpost')}}" method="POST">
         <textarea name="Post" rows="20" cols="100">Write New Post</textarea>
         <input type="submit">
+        <input hidden="true" name = komname value = "{{name}}">
       </form>
+    <p>{{cList}}</p>
     </body>
 </html>

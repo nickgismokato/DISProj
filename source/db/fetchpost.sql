@@ -1,1 +1,1 @@
-SELECT * FROM posts WHERE kuid_pk = (SELECT kuid FROM kommune WHERE name = %s)
+SELECT * FROM posts WHERE kuid_pk in (SELECT kuid FROM kommune WHERE name = %s)
