@@ -52,7 +52,9 @@
             {% for elm in UserSubs %}
                 <tr>
                     <td>{{ elm[1] }}</td>
-                    <td><a href="http://127.0.0.1:5000/kommune/{{ elm[1] }}" target="_self">Click Here</a></td>
+                    <td>
+                        <a href="http://127.0.0.1:5000/kommune/{{ elm[1] }}" target="_self">Click Here</a>
+                    </td>
                     <td>
                         <form action="{{ url_for('unsubscribe') }}" method="POST">
                             <input id="{{ elm[1]}}" name="Unsubscribe" type="hidden" value="{{ elm[1] }}">
