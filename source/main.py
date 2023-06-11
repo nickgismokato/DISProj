@@ -138,7 +138,7 @@ def profile():
         nameUser = "Default"
     else:
         nameUser = userClass.name  
-    return render_template('profile.html', nameUser = nameUser, myList = getmunicipalities())
+    return render_template('profile.html', nameUser = nameUser, myList = userClass.UserSubs)
 
 if __name__ == "__main__":
     app.debug = True
