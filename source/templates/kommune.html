@@ -26,6 +26,9 @@
     <body>
     <p>This is the forum of {{ name }}</p>
 
-    <p>{{ cList }}</p>
+    <form action="{{ url_for('submitpost')}}" method="POST">
+        <textarea name="Post" rows="20" cols="100">Write New Post</textarea>
+        <input type="submit">
+      </form>
     </body>
 </html>

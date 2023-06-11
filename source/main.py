@@ -121,6 +121,10 @@ def unsubscribe():
         userUnsubscribe(request.form['Unsubscribe'])
         userClass.updateSubs()
     return redirect('profile')
+@app.route("/submitpost", methods=['GET','POST'])
+def submitpost():
+    if request.method == "POST":
+        return redirect('profile')
 
 @app.route("/auth/register", methods = ['GET','POST'])
 def register():
