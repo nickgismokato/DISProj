@@ -413,7 +413,7 @@ def getmunicipalities():
         return kommuner
 
 #Subscribes a user to a municipality, arguments: uesrname = string, name of user. municipalityname = string, name of municipality
-def subscribe(username, municipalityname):
+def subscribe(uid, municipalityname):
     conn = None
     conf = params()
 
@@ -429,13 +429,6 @@ def subscribe(username, municipalityname):
             content = sql_file.read()
 
         cur.execute('''
-        SELECT uid
-        FROM users
-        WHERE username = %s
-        ''', [username])
-        userpk = cur.fetchone()
-
-        cur.execute('''
         SELECT kuid
         FROM kommune
         WHERE name = %s
@@ -443,7 +436,7 @@ def subscribe(username, municipalityname):
         minicipalitypk = cur.fetchone()
 
 
-        values = (minicipalitypk[0], userpk[0])
+        values = (minicipalitypk[0], uid)
 
         cur.execute(content, values)
 
@@ -488,3 +481,4 @@ def getsubscribed(uid):
             cur.close()
             conn.close()
         return kommuner
+    
