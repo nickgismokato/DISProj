@@ -139,6 +139,7 @@ def dropdown():
 @app.route('/profile', methods=['GET','POST'])
 def profile():
     listYouCanSubscribeTo()
+    print(userClass.UserSubs)
     if userClass.name == None:
         nameUser = "Default"
     else:
