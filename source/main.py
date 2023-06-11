@@ -12,6 +12,7 @@ class user:
     name = None
     UID = None
     loggedIn = False
+    UserSubs = []
     def __init__(self) -> None:
         None
     def loggingIn(self, user, uid):
@@ -22,6 +23,7 @@ class user:
         self.loggedIn = False
         self.name = None
         self.UID = None
+        self.UserSubs = []
     def printStatus(self):
         print(self.loggedIn)
         print(self.name)
@@ -29,6 +31,9 @@ class user:
 
 initialized = False
 userClass = user()
+
+def getSubs(uid):
+    return []
 
 #Initialize all the necesary stuff from the beginning
 def initStart():
@@ -121,6 +126,7 @@ def dropdown():
 
 @app.route('/profile', methods=['GET','POST'])
 def profile():
+
     if userClass.name == None:
         nameUser = "Default"
     else:
