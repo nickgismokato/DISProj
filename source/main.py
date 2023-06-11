@@ -148,7 +148,8 @@ def profile():
 
 @app.route('/kommune/<name>')
 def kommune(name):
-    return render_template("kommune.html", name = name)
+    cancer = fetchpost(name)
+    return render_template("kommune.html", name = name, cList = cancer)
 
 if __name__ == "__main__":
     app.debug = True
