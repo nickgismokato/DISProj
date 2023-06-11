@@ -66,6 +66,9 @@
               <div class="post-id">Post ID: {{ post[0] }}</div>
               <div class="post-date"> Date: {{ post[2] }}</div>
               <div class="post-user"> User ID: {{ post[4] }}</div>
+              <div class="go-to-post">
+                <form action="{{ url_for('go_to_post') }}" method="POST">
+                  <button type="submit">Go to post</button>
             </div>
             <div class="post-contents">
               {{ post[1] }}
