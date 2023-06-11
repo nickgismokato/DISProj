@@ -496,7 +496,7 @@ def getmunicipalities():
         return kommuner
 
 #Subscribes a user to a municipality, arguments: uesrname = string, name of user. municipalityname = string, name of municipality
-def subscribe(uid, municipalityname):
+def subscribeUser(uid, municipalityname):
     conn = None
     conf = params()
 
@@ -557,6 +557,7 @@ def getsubscribed(uid):
         conn.commit()
 
     except Exception as error:
+        print(error)
         None
 
     finally:

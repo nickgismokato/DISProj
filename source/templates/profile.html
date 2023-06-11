@@ -73,7 +73,12 @@
         {% for elm in myList %}
             <tr>
                 <td>{{ elm[1] }}</td>
-                <td>{{ elm[0] }}</td>
+                <td>
+                    <form action="{{ url_for('subscribe') }}" method="POST">
+                        <input id="{{ elm[1]}}" name="Subscribe" type="hidden" value="{{ elm[1] }}">
+                        <button type="submit"> Subscribe </button>
+                    </form>
+                </td>
             </tr>
         {% endfor %}
     </tbody>
