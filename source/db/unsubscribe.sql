@@ -1,0 +1,1 @@
+delete from subscribers WHERE kuid_pk = (SELECT kuid FROM kommune WHERE name = %s) AND uid_pk = %s

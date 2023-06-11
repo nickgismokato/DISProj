@@ -565,3 +565,31 @@ def getsubscribed(uid):
             conn.close()
         return kommuner
 
+def unsubscribe(uid, municipalityname):
+    conn = None
+    conf = params()
+
+    try:
+        #connection
+        conn = psycopg2.connect(conf)
+
+        #cursor
+        cur = conn.cursor()
+
+        #fetch init script
+        with open('source/db/subscribers.sql','r') as sql_file:
+            content = sql_file.read()
+
+        values = (municipalityname, uid)
+
+        cur.execute(content, values)
+
+        conn.commit()
+
+    except Exception as error:
+        print(error)
+
+    finally:
+        if conn != None:
+            cur.close()
+            conn.close()
