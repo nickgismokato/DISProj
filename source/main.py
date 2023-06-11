@@ -175,7 +175,8 @@ def kommune(name):
 @app.route('/profile',  methods=['GET','POST'])
 def deleteUser(name):
     if userClass.loggedIn == True:
-        deleteUser(name)
+        deleteuser(name)
+        userClass.loggingOut()
 
     return render_template('index.html')
 
