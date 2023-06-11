@@ -52,6 +52,7 @@ def initStart():
     komm = tsvClass()
     for KOMS in komm.muni:
         createmunicipality(KOMS[0])
+    db_demo()
     return None
 
 def logOut():
