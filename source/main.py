@@ -62,7 +62,6 @@ def logOut():
     updateStatus(userClass.name,False)
     userClass.loggingOut()
     
-
 #Localhost:5000/
 @app.route("/", methods=['GET','POST'])
 def index():
@@ -90,7 +89,6 @@ def login():
                 error = 'Invalid Credentials. Please try again.'
             else:
                 userClass.loggingIn(request.form['username'], UID)
-                userClass.printStatus()
                 return redirect(url_for('index'))
         return render_template('auth/login.html', error=error)
     else:
@@ -110,7 +108,6 @@ def logout():
 @app.route("/subscribe", methods=['GET','POST'])
 def subscribe():
     if request.method == "POST":
-        print(request.form['Subscribe'])
         userSubscribe(request.form['Subscribe'])
         userClass.updateSubs()
     return redirect('profile')
@@ -118,7 +115,6 @@ def subscribe():
 @app.route("/unsubscribe", methods=['GET','POST'])
 def unsubscribe():
     if request.method == "POST":
-        print(request.form['Unsubscribe'])
         userUnsubscribe(request.form['Unsubscribe'])
         userClass.updateSubs()
     return redirect('profile')
@@ -126,9 +122,6 @@ def unsubscribe():
 @app.route("/submitpost", methods=['GET','POST'])
 def submitpost():
     if request.method == "POST":
-        print("SUBMITPOST:")
-        print(request.form['komname'])
-        print(request.form['Post'])
         createpost(userClass.UID, request.form['komname'], request.form['Post'])
         return redirect(request.referrer)
 
@@ -167,7 +160,6 @@ def dropdown():
 def profile():
     if userClass.loggedIn == True:
         listYouCanSubscribeTo()
-        print(userClass.UserSubs)
         if userClass.name == None:
             nameUser = "Default"
         else:
@@ -198,7 +190,6 @@ def deleteUser():
         deleteuser(userClass.name)
         userClass.loggingOut()
     return render_template('index.html')
-
 
 
 if __name__ == "__main__":
