@@ -9,7 +9,7 @@ def db_init():
     try:
         #connection
         conn = psycopg2.connect(conf)
-        print("Connected")
+
         #cursor
         cur = conn.cursor()
 
@@ -20,7 +20,6 @@ def db_init():
             contentdemo = sql_file.read()
         cur.execute(content)
         cur.execute(contentdemo)
-
         conn.commit()
 
     except Exception as error:
