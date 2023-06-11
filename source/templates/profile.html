@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'header.html' %}
+    {% include 'sidenav.html'%}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/universal.css') }}">
+</head>
+<body>
+    <h1>Hello and Welcome to your profile page, {{nameUser}}</h1>
+    <p>Please do something</p>
+    <div class="container">
+        <form action="{{ url_for('logout') }}">
+          <input class="btn btn-default" type="submit" value="logout">
+        </form>
+        {% if error %}
+          <p class="error"><strong>Error:</strong> {{ error }}
+        {% endif %}
+      </div>
+</body>
+</html>

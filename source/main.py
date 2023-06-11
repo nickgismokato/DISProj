@@ -14,16 +14,18 @@ class user:
     loggedIn = False
     def __init__(self) -> None:
         None
-    def logginIn(self, user, uid):
+    def loggingIn(self, user, uid):
         self.name = user
         self.UID = uid
         self.loggedIn = True
-    def loggingOut(self,St):
-        self.loggedIn = St
+    def loggingOut(self):
+        self.loggedIn = False
         self.name = None
         self.UID = None
     def printStatus(self):
         print(self.loggedIn)
+        print(self.name)
+        print(self.UID)
 
 initialized = False
 userClass = user()
@@ -38,7 +40,7 @@ def initStart():
 
 def logOut():
     updateStatus(userClass.name,False)
-    userClass.loggingOut(False)
+    userClass.loggingOut()
     
 
 #Localhost:5000/
@@ -67,7 +69,7 @@ def login():
             if UID == -1:
                 error = 'Invalid Credentials. Please try again.'
             else:
-                userClass.logginIn(request.form['username'], UID)
+                userClass.loggingIn(request.form['username'], UID)
                 userClass.printStatus()
                 return redirect(url_for('index'))
         return render_template('auth/login.html', error=error)
@@ -75,16 +77,15 @@ def login():
         return redirect(url_for('index'))
 
 # might need to be removed
-@app.route("/auth/index", methods=['GET','POST'])
+@app.route("/logout", methods=['GET','POST'])
 def logout():
+    error = None
     if userClass.loggedIn == True:
-        error = None
-        if request.method == 'POST':
-            logOut()
-        else:
-            userClass.printStatus()
-            return redirect(url_for('login.html'))
-    return redirect(url_for('index'))
+        logOut()
+        print("Logging out")
+    else:
+        return redirect(url_for('login'))
+    return redirect(url_for('profile'))
 
 
 @app.route("/auth/register", methods = ['GET','POST'])
@@ -118,6 +119,13 @@ def dropdown():
     colours = ['Red', 'Blue', 'Black', 'Orange']
     return render_template('test.html', colours=colours)
 
+@app.route('/profile', methods=['GET','POST'])
+def profile():
+    if userClass.name == None:
+        nameUser = "Default"
+    else:
+        nameUser = userClass.name  
+    return render_template('profile.html', nameUser = nameUser)
 
 if __name__ == "__main__":
     app.debug = True
