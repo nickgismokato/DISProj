@@ -178,6 +178,11 @@ def kommune(name):
     cancer = fetchpost(name)
     return render_template("kommune.html", name = name, cList = cancer)
 
+@app.route('/kommune/<name1>/<name2>', methods=['GET','POST'])
+def getToPost(name1, name2):
+    strname2 = str(name2)
+    return render_template("post.html", name1 = name1, name2 = strname2)
+
 @app.route('/deleteuser',  methods=['GET','POST'])
 def deleteUser():
     if userClass.loggedIn == True:
@@ -185,6 +190,8 @@ def deleteUser():
         userClass.loggingOut()
 
     return render_template('index.html')
+
+
 
 if __name__ == "__main__":
     app.debug = True

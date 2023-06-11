@@ -52,28 +52,6 @@
   </style>
   </head>
     <body>
-    <p>This is the forum of {{ name }}</p>
-
-    <form action="{{ url_for('submitpost')}}" method="POST">
-        <textarea name="Post" rows="20" cols="100">Write New Post</textarea>
-        <input type="submit">
-        <input hidden="true" name = komname value = "{{name}}">
-      </form>
-      <div class="post-table">
-        {% for post in cList %}
-          <div class="post-row">
-            <div class="post-header">
-            <div class="post-id">Post ID: {{ post[0] }}</div>
-            <div class="post-date"> Date: {{ post[2] }}</div>
-            <div class="post-user"> User ID: {{ post[4] }}</div>
-            <div class="go-to-post">
-                <a href="http://127.0.0.1:5000/kommune/{{ name }}/{{post[0]}}" target="_self" >Go To Post</a>
-            </div>
-            <div class="post-contents">
-              {{ post[1] }}
-            </div>
-          </div>
-        {% endfor %}
-      </div>
+    <p>This is the post {{ name2 }} in {{ name1 }}</p>
     </body>
 </html>
