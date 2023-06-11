@@ -432,6 +432,37 @@ def deletereply(replyid):
             cur.close()
             conn.close()
 
+def fetchreply(pid):
+    conn = None
+    conf = params()
+    replies = []
+
+    try:
+        #connection
+        conn = psycopg2.connect(conf)
+
+        #cursor
+        cur = conn.cursor()
+
+        #fetch init script
+        with open('source/db/fetchpost.sql','r') as delete_file:
+            content = delete_file.read()
+
+        values = (pid)
+
+        cur.execute(content, [values])
+        replies = cur.fetchall()
+        conn.commit()
+
+    except Exception as error:
+        print(error)
+
+    finally:
+        if conn != None:
+            cur.close()
+            conn.close()
+        return replies
+
 def getmunicipalities():
     conn = None
     conf = params()
