@@ -36,7 +36,32 @@
       {% endif %}
   </div>
   <div class="right-section"> <!--RIGHT SECTION-->
-    <h1>User Subscriptions</h1>
+
+            <!--USER SUBSCRIBTIONS-->
+
+    <h1> User Subscriptions:</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <td> Municipalities </td>
+                <td> Ting </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for elm in UserSubs %}
+                <tr>
+                    <td>{{ elm[1] }}</td>
+                    <td>{{ elm[0] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    
+        <!--WHICH YOU CAN SUBSCRIBE TO-->
+
+    <h1>Municipalities you can subscribe to</h1>
+
+
     <table border="1">
     <thead>
         <tr>
@@ -53,14 +78,6 @@
         {% endfor %}
     </tbody>
     </table>
-
-    <ul>
-        {% for item in UserSubs %}
-        <li>{{ item }}</li>
-        {% endfor %}
-    </ul>
-
-      <h1> Municipalities you can subscribe to:</h1>
   </div>
 </div>
 </body></html>
