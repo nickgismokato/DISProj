@@ -566,7 +566,7 @@ def getsubscribed(uid):
             conn.close()
         return kommuner
 
-def unsubscribe(uid, municipalityname):
+def unsubscribeUser(uid, municipalityname):
     conn = None
     conf = params()
 
@@ -578,7 +578,7 @@ def unsubscribe(uid, municipalityname):
         cur = conn.cursor()
 
         #fetch init script
-        with open('source/db/subscribers.sql','r') as sql_file:
+        with open('source/db/unsubscribe.sql','r') as sql_file:
             content = sql_file.read()
 
         values = (municipalityname, uid)

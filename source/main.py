@@ -42,8 +42,11 @@ def listYouCanSubscribeTo():
     TotalList = getmunicipalities()
     returnList = sorted(list(set(TotalList)-set(userClass.UserSubs)))
     return returnList
-def userSubsribe(muniName):
+def userSubscribe(muniName):
     subscribeUser(userClass.UID, muniName)
+    userClass.updateSubs()
+def userUnsubscribe(muniName):
+    unsubscribeUser(userClass.UID, muniName)
     userClass.updateSubs()
 
 #Initialize all the necesary stuff from the beginning
@@ -108,10 +111,16 @@ def logout():
 def subscribe():
     if request.method == "POST":
         print(request.form['Subscribe'])
-        userSubsribe(request.form['Subscribe'])
+        userSubscribe(request.form['Subscribe'])
         userClass.updateSubs()
     return redirect('profile')
-
+@app.route("/unsubscribe", methods=['GET','POST'])
+def unsubscribe():
+    if request.method == "POST":
+        print(request.form['Unsubscribe'])
+        userUnsubscribe(request.form['Unsubscribe'])
+        userClass.updateSubs()
+    return redirect('profile')
 
 @app.route("/auth/register", methods = ['GET','POST'])
 def register():
