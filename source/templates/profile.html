@@ -28,8 +28,8 @@
   <div class="left-section"> <!--LEFT SECTION-->
       <h1>Hello and Welcome to your profile page, {{nameUser}}</h1>
       <p>Please do something</p>
-      <form action="{{ url_for('logout') }}">
-          <input class="btn btn-default" type="submit" value="logout">
+      <form action="{{ url_for('deleteUser') }}">
+          <input class="btn btn-default" type="submit" value="Delete Your Profile">
       </form>
       {% if error %}
           <p class="error"><strong>Error:</strong> {{ error }}</p>

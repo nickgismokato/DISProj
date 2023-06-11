@@ -172,6 +172,13 @@ def kommune(name):
     cancer = fetchpost(name)
     return render_template("kommune.html", name = name, cList = cancer)
 
+@app.route('/profile',  methods=['GET','POST'])
+def deleteUser(name):
+    if userClass.loggedIn == True:
+        deleteUser(name)
+
+    return render_template('index.html')
+
 if __name__ == "__main__":
     app.debug = True
     app.run(host="localhost", port=5000, debug=True)
